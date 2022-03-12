@@ -1,3 +1,4 @@
+import 'package:firebasedamo/pages/login.dart';
 import 'package:firebasedamo/service/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -64,6 +65,10 @@ class _RegistorPageState extends State<RegistorPage> {
         onPressed: () {
           registerWithEmail(_email.text, _password.text);
           addUser();
+          var route = MaterialPageRoute(
+              builder: (context) => const LoginPage(),
+            );
+            Navigator.push(context, route);
         },
         child: const Text(
           "Register",

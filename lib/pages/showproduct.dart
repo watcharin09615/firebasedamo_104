@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebasedamo/pages/addproduct.dart';
+import 'package:firebasedamo/pages/update.dart';
 import 'package:flutter/material.dart';
 
 class ShowProductPage extends StatefulWidget {
@@ -29,7 +32,7 @@ class _ShowProductPageState extends State<ShowProductPage> {
           children: [
           text(),
           showlist(),
-          addproduct(),
+          next(const AddProductPage() , 'เพิ่มสินค้า'),
           ],
         ),
       ),
@@ -37,7 +40,7 @@ class _ShowProductPageState extends State<ShowProductPage> {
     );
   }
 
-  SizedBox addproduct() {
+  SizedBox next(next , text) {
     return SizedBox(
       width: 130,
       height: 45,
@@ -46,10 +49,10 @@ class _ShowProductPageState extends State<ShowProductPage> {
           foregroundColor: MaterialStateProperty.all<Color>(Colors.lightBlue),
         ),
         onPressed: () {
-          var route = MaterialPageRoute(builder: (context) => const AddProductPage(),);
+          var route = MaterialPageRoute(builder: (context) => next ,);
           Navigator.push(context, route);
         },
-        child: const Text('เพิ่มสินค้า'),
+        child: Text(text),
       ),
     );
   }
@@ -67,7 +70,10 @@ class _ShowProductPageState extends State<ShowProductPage> {
                 Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
                 return Card(
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      var route = MaterialPageRoute(builder: (context) => UpdateProductPages(id: doc.id),);
+                      Navigator.push(context, route);
+                    },
                     title: Text(
                       '${data['product_name']}',
                       style: const TextStyle(

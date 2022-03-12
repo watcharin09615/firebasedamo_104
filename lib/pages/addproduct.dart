@@ -78,11 +78,11 @@ class _AddProductPageState extends State<AddProductPage> {
         decoration: InputDecoration(
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(16)),
-            borderSide: BorderSide(color: Colors.purple, width: 2),
+            borderSide: BorderSide(color: Color.fromARGB(255, 212, 255, 21), width: 2),
           ),
           enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(16)),
-            borderSide: BorderSide(color: Colors.purple, width: 2),
+            borderSide: BorderSide(color: Color.fromARGB(255, 0, 255, 191), width: 2),
           ),
           errorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(16)),
